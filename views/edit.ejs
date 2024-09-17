@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <!--Sets teh title of the website to Casting a Change-->
+    <title>Casting a change</title>
+    <!--Pulls the .css file from the css folder/directory-->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<!-- Basically the same structure as the index to make a change -->
+<body>
+    <!--Prints the header of the website-->
+    <h1>Modify your shared knowledge</h1>
+
+    <!--enters form action for edit using method post-->
+    <!--I just copied this from the index since it would pretty much function in the same exact way-->
+    <form action="/edit/<%= id %>" method="POST">
+        <!--gets user input for title-->
+        <input type="text" name="title" value="<%= post.title %>" required>
+        <!--gets user input for author-->
+        <input type="text" name="author" value="<%= post.author %>" required>
+        <!--gets user input for the content/knowledge of the wise user-->
+        <textarea name="content" required><%= post.content %></textarea>
+        <!--botton to update the content/knowledge of the post-->
+        <button type="submit">Update knowledge</button>
+    <!--marks the end of the post the form-->
+    </form>
+</body>
+</html>

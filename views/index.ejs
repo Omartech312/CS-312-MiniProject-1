@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- naming Mini Porject 1 to the website -->
+        <title>Mini Project 1</title>
+        <!--Pulls the .css from the this filepath-->
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <!-- prints the website header -->
+         <!--i thought it would be cool to make it somewhat themed-->
+        <h1>⚔️ League of Legends Forum ⚔️</h1>
+        
+        <!-- creates form -->
+        <form action="/create" method="POST">
+            <!--inputs from user (just getting the info stated ont he assignment)-->
+            
+                <!--title for post-->
+                <input type="text" name="title" placeholder="Post Title" required>
+                <!--author of post-->
+                <input type="text" name="author" placeholder="Author" required>
+                <!--The knowledge the author wants to share-->
+                <textarea name="content" placeholder="Write your post here" required></textarea>
+
+        <!-- botton ro publish the knowledge -->
+            <button type="submit">Publish knowledge</button>
+        </form>
+
+        <!-- Div that goes through all the post and prints their information using post.someData-->
+        <div id="posts">
+            <!--Traverses each post using index (basically a for loop for all elements of posts)-->
+            <% posts.forEach((post, index) => { %>
+                <!--enters div post-->
+                <div class="post">
+
+                    <!--I thougth this would be the most clean way to display the data-->
+                    <!--Since its kind of the standard that you would see pretty much everywhere-->
+                    <!--Prints the title of the post-->
+                    <h2><%= post.title %></h2>
+                    <!--Prints the author of the post along with the time fo the creation-->
+                    <p>Created by <%= post.author %> on <%= post.creationTime %></p>
+                    <!--Prints the knowledge the wise author feels liek sharing-->
+                    <p><%= post.content %></p>
+                    <!--Creates the botton to edit the data of the post-->
+                    <a href="/edit/<%= index %>">Edit</a>
+                    <!--Creates a botton to delete teh post and asks the user if he/she actually wants to delete the post-->
+                    <a href="/delete/<%= index %>" onclick="return confirm('Are you sure you want to banish this information from the lands of runaterra?');">Delete</a>
+                    
+                </div>
+            <!--Closes the for loop and we're done for this .ejs file-->
+            <% }) %>
+        </div>
+
+    </body>
+</html>
